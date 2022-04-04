@@ -10,7 +10,7 @@ void displayStack(stackNode * top);
 
 stackNode * createNode(int data); 
 
-int isEmpty(stackNode *top);
+int isEmpty(stackNode * top);
 
 void push(stackNode ** top, int data);
 
@@ -29,7 +29,7 @@ int main() {
 	displayStack(top);
 }
 
-void displayStack(stackNode *top) {
+void displayStack(stackNode * top) {
 	stackNode *tmp = top;
 	
 	while (tmp != NULL) {
@@ -50,7 +50,7 @@ int isEmpty(stackNode *top) {
 }
 
 void push(stackNode ** top, int data) {
-	stackNode *newNode = createNode(data);
+	stackNode * newNode = createNode(data);
 
 	newNode->next = *top;
 	*top = newNode;

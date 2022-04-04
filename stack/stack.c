@@ -9,23 +9,19 @@ typedef struct stack {
 
 struct stack* createStack(unsigned cap);
 
-void displayStack(stack * s) {
-	for(int i = s->top; i >= 0; i--) {
-		printf("%d\n", s->arr[i]);
-	}
-}
+void displayStack(stack * s);
 
-int isEmpty(stack *s);
+int isEmpty(stack * s);
 
-int isFull(stack *s);
+int isFull(stack * s);
 
-int size(stack *s);
+int size(stack * s);
 
-int peek(stack *s);
+int peek(stack * s);
 
-int pop(stack *s);
+int pop(stack * s);
 
-void push(stack *s, int data);
+void push(stack * s, int data);
 
 int main() {
 	stack * s = createStack(5);
@@ -46,32 +42,32 @@ int main() {
 	return 0;
 }
 
-int isEmpty(stack *s) {
+int isEmpty(stack * s) {
 	return s->top == -1;
 }
 
-int isFull(stack *s) {
+int isFull(stack * s) {
 	return s->top == s->cap - 1;
 }
 
-int size(stack *s) {
+int size(stack * s) {
 	return s->top + 1;
 }
 
-int peek(stack *s) {
+int peek(stack * s) {
 	if (isEmpty(s))
 		exit(EXIT_FAILURE);
 	return s->arr[s->top];
 }
 
-int pop(stack *s) {
+int pop(stack * s) {
 	if (isEmpty(s))
 		exit(EXIT_FAILURE);
 	printf("Popping %d.\n", peek(s));
 	return s->arr[s->top--];
 }
 
-void push(stack *s, int data) {
+void push(stack * s, int data) {
 	if(isFull(s))
 		return;
 	s->arr[++s->top] = data;
@@ -88,3 +84,8 @@ struct stack* createStack(unsigned cap) {
 }
 
 
+void displayStack(stack * s) {
+	for(int i = s->top; i >= 0; i--) {
+		printf("%d\n", s->arr[i]);
+	}
+}
