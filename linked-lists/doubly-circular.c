@@ -24,7 +24,6 @@ int main()
 	displayList(head);
 	insertNodeFront(&head, 2);
 	displayList(head);
-
 	return 1;
 }
 
