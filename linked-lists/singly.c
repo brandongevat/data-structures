@@ -17,7 +17,7 @@ void insertEnd(node **head, int value);
 
 void deleteNode(node **head, int value);
 
-node *recursiveDelete(node **head, int value);
+void recursiveDelete(node **head, int value);
 
 void insertSort(node **head, int value);
 
@@ -85,11 +85,10 @@ void insertSort(node **head, int value)
 	printf("%d inserted at it's respective location.\n", value);
 }
 
-node *recursiveDelete(node **head, int value)
+void recursiveDelete(node **head, int value)
 {
 	if (*head == NULL)
-		return *head;
-
+		return;
 	if ((*head)->data == value)
 	{
 		node *tmp;
@@ -97,10 +96,9 @@ node *recursiveDelete(node **head, int value)
 		*head = (*head)->next;
 		free(tmp);
 		printf("%d deleted recursively.\n", value);
-		return *head;
 	}
-	(*head)->next = recursiveDelete(&((*head)->next), value);
-	return *head;
+	else
+		recursiveDelete(&((*head)->next), value);
 }
 
 void insertEnd(node **head, int value)
