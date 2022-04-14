@@ -8,9 +8,13 @@ typedef struct node
 	struct node *next;
 } node;
 
-void insertNodeFront(node **head, int value);
+void insertFront(node **head, int value);
 
-void deleteNode(node **head, int value);
+void insertEnd(node **head, int value);
+
+void insertInorder(node **head, int value);
+
+void delete(node **head, int value);
 
 void displayList(node *head);
 
@@ -20,14 +24,14 @@ int main()
 	head->data = 0;
 	head->next = head;
 	head->prev = head;
-	insertNodeFront(&head, 1);
+	insertFront(&head, 1);
 	displayList(head);
-	insertNodeFront(&head, 2);
+	insertFront(&head, 2);
 	displayList(head);
 	return 1;
 }
 
-void insertNodeFront(node **head, int value)
+void insertFront(node **head, int value)
 {
 	node *newNode = malloc(sizeof(node));
 	newNode->data = value;
@@ -56,6 +60,13 @@ void insertNodeFront(node **head, int value)
 		*head = newNode;
 	}
 }
+
+
+void insertEnd(node **head, int value);
+
+void insertInorder(node **head, int value);
+
+void delete(node **head, int value);
 
 void displayList(node *head)
 {

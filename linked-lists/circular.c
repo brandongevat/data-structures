@@ -7,9 +7,13 @@ typedef struct node
 	struct node *next;
 } node;
 
-void insertNodeFront(node **head, int value);
+void insertFront(node **head, int value);
 
-void deleteNode(node **head, int value);
+void insertEnd(node **head, int value);
+
+void insertInorder(node **head, int value);
+
+void delete(node **head, int value);
 
 void displayList(node *head);
 
@@ -19,21 +23,23 @@ int main()
 	head->data = 0;
 	head->next = head;
 	displayList(head);
-	insertNodeFront(&head, 1);
+	insertFront(&head, 1);
 	displayList(head);
-	insertNodeFront(&head, 2);
+	insertFront(&head, 2);
 	displayList(head);
-	deleteNode(&head, 0);
+	insertEnd(&head, -1);
 	displayList(head);
-	deleteNode(&head, 2);
+	delete(&head, 0);
 	displayList(head);
-	deleteNode(&head, 1);
+	delete(&head, 2);
+	displayList(head);
+	delete(&head, 1);
 	displayList(head);
 
 	return 1;
 }
 
-void insertNodeFront(node **head, int value)
+void insertFront(node **head, int value)
 {
 	node *newNode = malloc(sizeof(node));
 
@@ -44,6 +50,7 @@ void insertNodeFront(node **head, int value)
 	{
 		newNode->next = newNode;
 		printf("%d inserted at the front of the list.\n", value);
+		*head = newNode;
 		return;
 	}
 	// Case 1: |LL| > 0
@@ -58,7 +65,37 @@ void insertNodeFront(node **head, int value)
 	printf("%d inserted at the front of the list.\n", value);
 }
 
-void deleteNode(node **head, int value)
+
+void insertEnd(node **head, int value) {
+	node * newNode = malloc(sizeof(node));
+	
+	newNode->data = value;
+
+	// Case 0: |LL| == 0.
+	if (!*head)
+	{
+		newNode->next = newNode;
+		printf("%d inserted at the back of the list\n", value);
+		*head = newNode;
+		return;
+
+	}
+	// Case 1 |LL| > 1.
+	node *tmp = *head;
+	while (tmp->next != *head) {
+		tmp = tmp->next;
+	}
+	newNode->next = *head;
+	tmp->next = newNode;
+	printf("%d inserted at the end of the list.\n", value);
+
+}
+
+void insertEnd(node **head, int value);
+
+void insertInorder(node ** head, int value);
+
+void delete(node **head, int value)
 {
 
 	node *tmp = *head;

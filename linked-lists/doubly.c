@@ -12,6 +12,12 @@ node *createNode(int value);
 
 void insertFront(node **head, int value);
 
+void insertEnd(node **head, int value);
+
+void insertInorder(node **head, int value);
+
+void delete(node **head, int value);
+
 void displayLL(node *head);
 
 int main()
